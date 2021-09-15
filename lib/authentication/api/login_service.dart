@@ -1,8 +1,8 @@
-import 'package:flutter_entity_list/rest-api/api.dart';
+import 'package:flutter_entity_list/common_services/utils.dart';
+import 'package:flutter_entity_list/entity_list/api/api.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_entity_list/rest-api/loginApi.dart';
+import 'package:flutter_entity_list/authentication/api/loginApi.dart';
 import 'package:logger/logger.dart';
-import 'Utils.dart';
 
 class LoginService{
   final logger = Logger();

@@ -1,5 +1,5 @@
-import 'package:flutter_entity_list/rest-api/loginApi.dart';
-import 'package:flutter_entity_list/services/LoginService.dart';
+import 'package:flutter_entity_list/authentication/api/loginApi.dart';
+import 'package:flutter_entity_list/authentication/api/login_service.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:dio/dio.dart';
 import 'package:get/get.dart';

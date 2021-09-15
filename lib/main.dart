@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_entity_list/screens/EntityInfoScreen.dart';
-import 'package:flutter_entity_list/screens/HomeScreen.dart';
-import 'package:flutter_entity_list/screens/SettingsScreen.dart';
+import 'package:flutter_entity_list/entity_list/entity_info/entity_info_page.dart';
+import 'package:flutter_entity_list/entity_list/home_page.dart';
+import 'package:flutter_entity_list/settings/settings_page.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get.dart';

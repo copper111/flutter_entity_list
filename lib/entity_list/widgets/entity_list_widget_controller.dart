@@ -1,7 +1,7 @@
-import 'package:flutter_entity_list/rest-api/api.dart';
-import 'package:flutter_entity_list/rest-api/metadata.dart';
-import 'package:flutter_entity_list/services/ApiService.dart';
-import 'package:flutter_entity_list/services/MetadataService.dart';
+import 'package:flutter_entity_list/entity_list/api/api.dart';
+import 'package:flutter_entity_list/entity_list/api/metadata.dart';
+import 'package:flutter_entity_list/entity_list/api/list_api_service.dart';
+import 'package:flutter_entity_list/entity_list/api/metadata_api_service.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:logger/logger.dart';
 import 'package:get/get.dart';

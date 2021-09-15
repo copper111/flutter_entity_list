@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_entity_list/model/EntityDescripter.dart';
-import 'package:flutter_entity_list/rest-api/loginApi.dart';
-import 'package:flutter_entity_list/widgets/EntityListWidgetControler.dart';
-import 'package:flutter_entity_list/widgets/EntityWidget.dart';
-import 'package:flutter_entity_list/widgets/Navigation.dart';
+import 'package:flutter_entity_list/common_widgets/navigation.dart';
+import 'package:flutter_entity_list/entity_list/entity_descripter.dart';
+import 'package:flutter_entity_list/authentication/api/loginApi.dart';
+import 'package:flutter_entity_list/entity_list/widgets/entity_list_widget_controller.dart';
+import 'package:flutter_entity_list/entity_list/widgets/entity_list_item_widget.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
 class HomeScreen extends StatelessWidget {

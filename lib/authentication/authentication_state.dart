@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_entity_list/rest-api/loginApi.dart';
+import 'package:flutter_entity_list/authentication/api/loginApi.dart';
 import 'package:dio/dio.dart';
 
 class AuthenticationState extends Equatable {

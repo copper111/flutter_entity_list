@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_entity_list/widgets/Navigation.dart';
+import 'package:flutter_entity_list/common_widgets/navigation.dart';
 
 
 class SettingsScreen extends StatelessWidget {
