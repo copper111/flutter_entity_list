@@ -35,6 +35,8 @@ class AuthenticationController extends GetxController {
         }
         if((e as DioError).response.statusCode == 401)
           throw AuthenticationException(message: 'Не удалось авторизироваться в системе. Проверьте корректность логина и пароля');
+        if((e as DioError).response.statusCode == 500)
+          throw AuthenticationException(message: 'Не удалось авторизироваться в системе. Ошибка сервера приложений: ${(e as DioError).message}');
       } else
          throw AuthenticationException(message: 'Ошибка запроса, свяжитесь с администратором');
     }
