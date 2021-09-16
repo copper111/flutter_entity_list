@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_entity_list/authentication/api/loginApi.dart';
+import 'package:flutter_entity_list/authentication/api/login_api.dart';
 import 'package:flutter_entity_list/common_services/utils.dart';
 import 'package:logger/logger.dart';
 

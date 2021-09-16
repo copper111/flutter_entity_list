@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
-part 'loginApi.g.dart';
+part 'login_api.g.dart';
 
 @RestApi()
 abstract class RestClientLogin {

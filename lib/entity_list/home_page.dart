@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_entity_list/common_widgets/navigation.dart';
 import 'package:flutter_entity_list/entity_list/entity_descripter.dart';
-import 'package:flutter_entity_list/authentication/api/loginApi.dart';
+import 'package:flutter_entity_list/authentication/api/login_api.dart';
 import 'package:flutter_entity_list/entity_list/widgets/entity_list_widget_controller.dart';
 import 'package:flutter_entity_list/entity_list/widgets/entity_list_item_widget.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
