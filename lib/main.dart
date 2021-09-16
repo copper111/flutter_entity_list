@@ -43,6 +43,7 @@ class MyApp extends GetWidget<AuthenticationController> {
         GetPage(name: '/', page: () => HomeScreen()),
         GetPage(name: '/einfo', page: () => EntityInfoScreen()),
         GetPage(name: '/settings', page: () => SettingsScreen()),
+        GetPage(name: '/login', page: () => LoginPage()),
       ],
 
     );

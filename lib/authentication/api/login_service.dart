@@ -15,16 +15,21 @@ class LoginService{
     final dio = Dio();
     dio.interceptors.clear();
     dio.interceptors.add(LogInterceptor(responseBody: false));
-    //dio.options.baseUrl = "http://${this.url}";
+    // это базовый УРЛ, тот который будет подставляться если ни в аннотации к API,
+    // ни в конструкторе рестклиента не указали явно другой УРЛ
+    dio.options.baseUrl = "http://${this.url}:8080/";
     dio.options.headers["authorization"] = Utils().getBasicAuth(this.login, this.password);   // config your dio headers globally
     dio.options.headers["Content-type"] = "application/json; charset=utf-8";
     dio.options.headers["content-type"] = "application/json; charset=utf-8";// config your dio headers globally
     dio.options.headers["User-Agent"] = "Argus-Android-Mobile-Arm-Client";
     dio.options.headers["Accept"] = "application/json";
+
     return dio;
   }
 
   RestClientLogin prepareClient(){
-    return RestClientLogin(prepareConnection(), baseUrl: "http://${url}");
+    // так как у нас доступ к апи логина и к апи НРИ размещены на разных портах
+    // приходится жонглировать разными урлами в расчете на их корректную приоретизацию (см. доки)
+    return RestClientLogin(prepareConnection(), baseUrl: "http://${url}:8190/");
   }
 }

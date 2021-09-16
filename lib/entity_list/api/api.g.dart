@@ -45,7 +45,6 @@ Map<String, dynamic> _$AttributesRawToJson(AttributesRaw instance) =>
 class _RestClient implements RestClient {
   _RestClient(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    baseUrl ??= 'nope';
   }
 
   final Dio _dio;
@@ -69,7 +68,7 @@ class _RestClient implements RestClient {
     };
     final _data = possibleFilterStates.map((e) => e.toJson()).toList();
     final _result = await _dio.request<List<dynamic>>(
-        ':8080/argus/webresources/system/inf/inventory/api/entities/$entityId/iuc/$iucKeyword/instances/list',
+        'argus/webresources/system/inf/inventory/api/entities/$entityId/iuc/$iucKeyword/instances/list',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'POST',

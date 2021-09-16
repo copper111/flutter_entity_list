@@ -97,7 +97,6 @@ Map<String, dynamic> _$InitValueRawToJson(InitValueRaw instance) =>
 class _RestClientMetadata implements RestClientMetadata {
   _RestClientMetadata(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    baseUrl ??= 'nope';
   }
 
   final Dio _dio;
@@ -112,7 +111,7 @@ class _RestClientMetadata implements RestClientMetadata {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.request<List<dynamic>>(
-        ':8080/argus/webresources/system/inf/inventory/metadata/entities/$entityId/iuc/$iuk/custom-values?fetch-possible-values=false',
+        'argus/webresources/system/inf/inventory/metadata/entities/$entityId/iuc/$iuk/custom-values?fetch-possible-values=false',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',

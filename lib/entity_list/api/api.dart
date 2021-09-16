@@ -4,11 +4,11 @@ import 'package:dio/dio.dart';
 
 part 'api.g.dart';
 
-@RestApi(baseUrl: "Nope")
+@RestApi()
 abstract class RestClient {
   factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
 
-  @POST(":8080/argus/webresources/system/inf/inventory/api/entities/{entity-id}/iuc/{iuc-keyword}/instances/list")
+  @POST("argus/webresources/system/inf/inventory/api/entities/{entity-id}/iuc/{iuc-keyword}/instances/list")
   Future<List<Entity>> getEntities(@Path("entity-id") int entityId, @Path("iuc-keyword") String iucKeyword,
     @Body() List<dynamic> possibleFilterStates, @Query("sorting-rules[]") List<String> sortingRules,
     @Query("first-row") int firstRow, @Query("max-rows") int maxRows );

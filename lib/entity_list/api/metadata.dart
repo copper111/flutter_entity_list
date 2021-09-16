@@ -4,11 +4,11 @@ import 'package:dio/dio.dart';
 
 part 'metadata.g.dart';
 
-@RestApi(baseUrl: "Nope")
+@RestApi()
 abstract class RestClientMetadata {
   factory RestClientMetadata(Dio dio, {String baseUrl}) = _RestClientMetadata;
 
-  @GET(":8080/argus/webresources/system/inf/inventory/metadata/entities/{entity-id}/iuc/{iuc-keyword}/custom-values?fetch-possible-values=false")
+  @GET("argus/webresources/system/inf/inventory/metadata/entities/{entity-id}/iuc/{iuc-keyword}/custom-values?fetch-possible-values=false")
   Future<List<EntityMetadata>> getEntityMetadata(@Path("entity-id") int entityId, @Path("iuc-keyword") String iuk);
 }
 

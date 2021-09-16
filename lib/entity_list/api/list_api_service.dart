@@ -9,6 +9,6 @@ class ApiService{
 
   RestClient prepareClient(){
     final AuthenticationController _authenticationController = Get.find();
-    return RestClient((_authenticationController.state as Authenticated).connection, baseUrl: "http://${(_authenticationController.state as Authenticated).currentBaseUrl}");
+    return RestClient((_authenticationController.state as Authenticated).connection);
   }
 }

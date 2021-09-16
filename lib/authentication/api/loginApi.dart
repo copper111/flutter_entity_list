@@ -4,10 +4,10 @@ import 'package:dio/dio.dart';
 
 part 'loginApi.g.dart';
 
-@RestApi(baseUrl: "Nope")
+@RestApi()
 abstract class RestClientLogin {
   factory RestClientLogin(Dio dio, {String baseUrl}) = _RestClientLogin;
-  @GET(":8190/api//authentication/logininfo")
+  @GET("api/authentication/logininfo")
   Future<LoginInfo> getLoginInfo();
 }
 

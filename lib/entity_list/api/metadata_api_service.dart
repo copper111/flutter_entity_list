@@ -9,7 +9,7 @@ class MetadataService{
 
   RestClientMetadata prepareClient(){
     final AuthenticationController _authenticationController = Get.find();
-    return RestClientMetadata((_authenticationController.state as Authenticated).connection, baseUrl: "http://${(_authenticationController.state as Authenticated).currentBaseUrl}");
+    return RestClientMetadata((_authenticationController.state as Authenticated).connection);
   }
 }
 

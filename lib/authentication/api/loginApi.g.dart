@@ -39,7 +39,6 @@ Map<String, dynamic> _$LoginInfoToJson(LoginInfo instance) => <String, dynamic>{
 class _RestClientLogin implements RestClientLogin {
   _RestClientLogin(this._dio, {this.baseUrl}) {
     ArgumentError.checkNotNull(_dio, '_dio');
-    baseUrl ??= 'nope';
   }
 
   final Dio _dio;
@@ -52,7 +51,7 @@ class _RestClientLogin implements RestClientLogin {
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result = await _dio.request<Map<String, dynamic>>(
-        ':8190/api//authentication/logininfo',
+        'api/authentication/logininfo',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
