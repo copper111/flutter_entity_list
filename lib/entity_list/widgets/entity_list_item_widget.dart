@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_entity_list/entity_list/api/api.dart';
 import 'package:flutter_entity_list/entity_list/api/metadata.dart';
+import 'package:flutter_entity_list/entity_list/model/entity.dart';
 import 'package:get/route_manager.dart';
 
 class EntityWidget extends StatelessWidget {

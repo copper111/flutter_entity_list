@@ -1,42 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'api.dart';
-
-// **************************************************************************
-// JsonSerializableGenerator
-// **************************************************************************
-
-Entity _$EntityFromJson(Map<String, dynamic> json) {
-  return Entity(
-    json['id'] as int,
-    json['entityId'] as int,
-    json['entityName'] as String,
-    (json['attributesRaw'] as Map<String, dynamic>)?.map(
-      (k, e) => MapEntry(k,
-          e == null ? null : AttributesRaw.fromJson(e as Map<String, dynamic>)),
-    ),
-  );
-}
-
-Map<String, dynamic> _$EntityToJson(Entity instance) => <String, dynamic>{
-      'id': instance.id,
-      'entityId': instance.entityId,
-      'entityName': instance.entityName,
-      'attributesRaw': instance.attributesRaw,
-    };
-
-AttributesRaw _$AttributesRawFromJson(Map<String, dynamic> json) {
-  return AttributesRaw(
-    json['value'],
-    json['desc'],
-  );
-}
-
-Map<String, dynamic> _$AttributesRawToJson(AttributesRaw instance) =>
-    <String, dynamic>{
-      'value': instance.value,
-      'desc': instance.desc,
-    };
+part of 'entity_list_api_remote.dart';
 
 // **************************************************************************
 // RetrofitGenerator

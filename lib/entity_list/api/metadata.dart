@@ -1,3 +1,6 @@
+import 'package:flutter_entity_list/authentication/authentication_controller.dart';
+import 'package:flutter_entity_list/authentication/authentication_state.dart';
+import 'package:get/get.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
@@ -91,4 +94,11 @@ class InitValueRaw {
 
   factory InitValueRaw.fromJson(Map<String, dynamic> json) => _$InitValueRawFromJson(json);
   Map<String, dynamic> toJson() => _$InitValueRawToJson(this);
+}
+
+class MetadataService{
+  static RestClientMetadata prepareClient(){
+    final AuthenticationController _authenticationController = Get.find();
+    return RestClientMetadata((_authenticationController.state as Authenticated).connection);
+  }
 }

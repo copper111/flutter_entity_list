@@ -1,10 +1,9 @@
-import 'package:flutter_entity_list/entity_list/api/api.dart';
 import 'package:flutter_entity_list/entity_list/api/metadata.dart';
-import 'package:flutter_entity_list/entity_list/api/list_api_service.dart';
-import 'package:flutter_entity_list/entity_list/api/metadata_api_service.dart';
+import 'package:flutter_entity_list/entity_list/entity_list_repository.dart';
+import 'package:flutter_entity_list/entity_list/model/entity.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:logger/logger.dart';
-import 'package:get/get.dart';
 
 class EntityListWidgetControler extends GetxController{
   final logger = Logger();
@@ -12,20 +11,23 @@ class EntityListWidgetControler extends GetxController{
   final entities = Future.value(<Entity>[]).obs;
   int entityId;
 
+  // Получим репозиторий
+  final EntityListRepository _entityListRepository = Get.find();
+
   @override
   void onInit(){
     super.onInit();
   }
 
   Future<List<EntityMetadata>> getFutureMetadata() async{
-    metadata.value = MetadataService().prepareClient().getEntityMetadata(entityId, "List").catchError((Object obj) {
+    metadata.value = MetadataService.prepareClient().getEntityMetadata(entityId, "List").catchError((Object obj) {
       logger.e("Got error : $obj.printError()");
     });
     return metadata.value;
   }
 
   Future<List<Entity>> getFutureEntities() async{
-    entities.value = ApiService().prepareClient().getEntities(entityId, "List", [], [], 0, 1000).catchError((Object obj) {
+    entities.value = _entityListRepository.getEntities(entityId, "List", [], [], 0, 1000).catchError((Object obj) {
       logger.e("Got error : $obj.printError()");
     });
      return  entities.value;

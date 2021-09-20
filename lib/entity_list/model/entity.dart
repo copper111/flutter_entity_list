@@ -1,24 +1,18 @@
+import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:retrofit/retrofit.dart';
-import 'package:dio/dio.dart';
 
-part 'api.g.dart';
+part 'entity.g.dart';
 
-@RestApi()
-abstract class RestClient {
-  factory RestClient(Dio dio, {String baseUrl}) = _RestClient;
-
-  @POST("argus/webresources/system/inf/inventory/api/entities/{entity-id}/iuc/{iuc-keyword}/instances/list")
-  Future<List<Entity>> getEntities(@Path("entity-id") int entityId, @Path("iuc-keyword") String iucKeyword,
-    @Body() List<dynamic> possibleFilterStates, @Query("sorting-rules[]") List<String> sortingRules,
-    @Query("first-row") int firstRow, @Query("max-rows") int maxRows );
-}
-
+@HiveType(typeId: 1)
 @JsonSerializable()
 class Entity {
+  @HiveField(0)
   int id;
+  @HiveField(1)
   int entityId;
+  @HiveField(2)
   String entityName;
+  @HiveField(3)
   Map<String, AttributesRaw> attributesRaw;
 
 
@@ -28,9 +22,12 @@ class Entity {
   Map<String, dynamic> toJson() => _$EntityToJson(this);
 }
 
+@HiveType(typeId: 2)
 @JsonSerializable()
 class AttributesRaw {
+  @HiveField(0)
   dynamic value;
+  @HiveField(1)
   dynamic desc;
 
 

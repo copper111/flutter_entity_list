@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_entity_list/entity_info/entity_info_page.dart';
 import 'package:flutter_entity_list/entity_list/home_page.dart';
@@ -7,12 +5,17 @@ import 'package:flutter_entity_list/settings/settings_page.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+
 import 'authentication/authentication_controller.dart';
 import 'authentication/authentication_service.dart';
 import 'authentication/authentication_state.dart';
 import 'authentication/login_page.dart';
 import 'common_services/preference_utils.dart';
+import 'entity_list/entity_list_repository.dart';
+import 'package:path_provider/path_provider.dart';
+
+import 'entity_list/model/entity.dart';
 
 void main() {
   initServices();
@@ -25,16 +28,18 @@ void initServices() async{
   print('Запуск сервисов...');
   // серсис авторизации (хранит информацию о текущем пользователе)
   Get.lazyPut(() => AuthenticationController(Get.put(InstanceAuthenticationService())),);
-
+  // репозиторий для сущности
+  Get.lazyPut(() => EntityListRepository());
   // синглтон shared preference
-  PreferenceUtils.init();
+  //PreferenceUtils.init();
 
   // NOSQL DB
-  var path = Directory.current.path;
+ // var path = await getApplicationDocumentsDirectory();
+
   Hive
-    ..init(path);
-    //..registerAdapter(adapter)
-  var box = Hive.openBox('testBox');
+    ..initFlutter()
+    ..registerAdapter(EntityAdapter())
+    ..registerAdapter(AttributesRawAdapter());
 
   print('Все сервисы запущены...');
 }
