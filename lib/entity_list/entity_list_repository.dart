@@ -12,14 +12,11 @@ class EntityListRepository extends GetxService{
   final EntityListApiLocal localStorage = EntityListApiLocal();
 
   @override
-  Future<List<Entity>> getEntities(int entityId, String iucKeyword, List possibleFilterStates, List<String> sortingRules, int firstRow, int maxRows) {
-    Future<List<Entity>> result = restClient.getEntities(entityId, iucKeyword, possibleFilterStates, sortingRules, firstRow, maxRows);
-    result.then((value) => {
-      localStorage.setEntities(value),
-    }).onError((error, stackTrace) => {
-      result = localStorage.getEntities(entityId, iucKeyword, possibleFilterStates, sortingRules, firstRow, maxRows),
-    });
+  Future<List<Entity>> getEntities(int entityId, String iucKeyword, List possibleFilterStates, List<String> sortingRules, int firstRow, int maxRows) async{
+    List<Entity> remoteResult = await restClient.getEntities(entityId, iucKeyword, possibleFilterStates, sortingRules, firstRow, maxRows);
+    localStorage.setEntities(remoteResult);
 
-    return result;
+    var localResult = localStorage.getEntities(entityId, iucKeyword, possibleFilterStates, sortingRules, firstRow, maxRows);
+    return localResult;
   }
 }
