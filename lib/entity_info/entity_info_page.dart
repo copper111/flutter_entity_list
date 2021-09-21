@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_entity_list/common_widgets/navigation.dart';
-import 'package:flutter_entity_list/entity_list/api/metadata.dart';
 import 'package:flutter_entity_list/entity_list/model/entity.dart';
+import 'package:flutter_entity_list/entity_list/model/metadata.dart';
 import 'package:get/get.dart';
 
 

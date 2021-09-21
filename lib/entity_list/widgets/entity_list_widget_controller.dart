@@ -1,6 +1,7 @@
-import 'package:flutter_entity_list/entity_list/api/metadata.dart';
+import 'package:flutter_entity_list/entity_list/api/entity_metadata_api_remote.dart';
 import 'package:flutter_entity_list/entity_list/entity_list_repository.dart';
 import 'package:flutter_entity_list/entity_list/model/entity.dart';
+import 'package:flutter_entity_list/entity_list/model/metadata.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:logger/logger.dart';
@@ -20,7 +21,7 @@ class EntityListWidgetControler extends GetxController{
   }
 
   Future<List<EntityMetadata>> getFutureMetadata() async{
-    metadata.value = MetadataService.prepareClient().getEntityMetadata(entityId, "List").catchError((Object obj) {
+    metadata.value = _entityListRepository.getEntityMetadataList(entityId, "List").catchError((Object obj) {
       logger.e("Got error : $obj.printError()");
     });
     return metadata.value;
