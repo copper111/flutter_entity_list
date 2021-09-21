@@ -4,11 +4,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_entity_list/common_widgets/navigation.dart';
 import 'package:flutter_entity_list/entity_list/entity_descripter.dart';
 import 'package:flutter_entity_list/authentication/api/login_api.dart';
-import 'package:flutter_entity_list/entity_list/widgets/entity_list_widget_controller.dart';
+import 'package:flutter_entity_list/entity_list/entity_list_screen_controller.dart';
 import 'package:flutter_entity_list/entity_list/widgets/entity_list_item_widget.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-class HomeScreen extends StatelessWidget {
+class EntityListScreen extends StatelessWidget {
   LoginInfo user;
 
   final entityIdController = TextEditingController();
@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
     const EntityDesripter(20000, "Оборудование")
   ];
 
-  HomeScreen({Key key, this.user}) : super(key: key);
+  EntityListScreen({Key key, this.user}) : super(key: key);
 
 
   @override

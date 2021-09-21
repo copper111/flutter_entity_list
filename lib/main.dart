@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_entity_list/entity_info/entity_info_page.dart';
-import 'package:flutter_entity_list/entity_list/home_page.dart';
-import 'package:flutter_entity_list/settings/settings_page.dart';
+import 'package:flutter_entity_list/entity_info/entity_info_screen.dart';
+import 'package:flutter_entity_list/entity_list/entity_list_screen.dart';
+import 'package:flutter_entity_list/settings/settings_screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -10,7 +10,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'authentication/authentication_controller.dart';
 import 'authentication/authentication_service.dart';
 import 'authentication/authentication_state.dart';
-import 'authentication/login_page.dart';
+import 'authentication/login_screen.dart';
 import 'entity_list/entity_list_repository.dart';
 import 'entity_list/model/entity.dart';
 import 'entity_list/model/metadata.dart';
@@ -60,14 +60,14 @@ class MyApp extends GetWidget<AuthenticationController> {
         }
 
         if (controller.state is Authenticated) {
-          return HomeScreen(
+          return EntityListScreen(
             user: (controller.state as Authenticated).user,
           );
         }
         return SettingsScreen();
       }),
       getPages: [
-        GetPage(name: '/', page: () => HomeScreen()),
+        GetPage(name: '/', page: () => EntityListScreen()),
         GetPage(name: '/einfo', page: () => EntityInfoScreen()),
         GetPage(name: '/settings', page: () => SettingsScreen()),
         GetPage(name: '/login', page: () => LoginPage()),

@@ -7,8 +7,8 @@ import 'package:get/get.dart';
 
 class EntityInfoScreen extends StatelessWidget {
 
-  List<EntityMetadata> metadata = Get.arguments['metadata'];
-  Entity entity = Get.arguments['entity'];
+  final List<EntityMetadata> metadata = Get.arguments['metadata'];
+  final Entity entity = Get.arguments['entity'];
 
   @override
   Widget build(BuildContext context) {
