@@ -21,7 +21,7 @@ class Navigation extends StatelessWidget {
                 children: [
                   Text(
                     'Аргус',
-                    style: TextStyle(color: Colors.white, fontSize: 25),
+                    style: TextStyle(fontSize: 25),
                   ),
                   _authenticationController.state is Authenticated ? Text("${(_authenticationController.state as Authenticated).user.loginName}") : Text("")
                 ],
@@ -34,22 +34,22 @@ class Navigation extends StatelessWidget {
             ),
 
             ListTile(
-              leading: Icon(Icons.list, color: Colors.white),
-              title: Text('Список сущностей', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              leading: Icon(Icons.list),
+              title: Text('Список сущностей', style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {
                 Get.toNamed("/");
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings, color: Colors.white),
-              title: Text('Настройки', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              leading: Icon(Icons.settings),
+              title: Text('Настройки', style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {
                 Get.toNamed("/settings");
               },
             ),
             ListTile(
-              leading: Icon(Icons.exit_to_app, color: Colors.white),
-              title: Text('Выход', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              leading: Icon(Icons.exit_to_app),
+              title: Text('Выход', style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {
                 _authenticationController.signOut();
                 Get.toNamed("/");

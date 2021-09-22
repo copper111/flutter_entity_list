@@ -7,6 +7,7 @@ import 'package:flutter_entity_list/authentication/api/login_api.dart';
 import 'package:flutter_entity_list/entity_list/entity_list_screen_controller.dart';
 import 'package:flutter_entity_list/entity_list/widgets/entity_list_item_widget.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:get/get.dart';
 
 class EntityListScreen extends StatelessWidget {
   LoginInfo user;
@@ -30,14 +31,12 @@ class EntityListScreen extends StatelessWidget {
     return GetBuilder<EntityListWidgetControler>(
       init: EntityListWidgetControler(),
       builder: (_) => Scaffold(
-          backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
           drawer: Navigation(),
           appBar: AppBar(
-            backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Cущность', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                Text('Cущность', style: TextStyle(fontWeight: FontWeight.bold)),
                 Padding(
                   padding: EdgeInsets.all(10),
                   child: DropdownButton<int>(
@@ -45,13 +44,12 @@ class EntityListScreen extends StatelessWidget {
                     icon: const Icon(Icons.arrow_drop_down_circle_outlined),
                     iconSize: 24,
                     elevation: 16,
-                    style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
                     onChanged: (int newValue) {
                       _.setEntityId(newValue);
                     },
                     underline: Container(
                       height: 2,
-                      color: Colors.white54,
                     ),
                     //
                     items: entityTypeList.map((EntityDesripter value) {

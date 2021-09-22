@@ -15,7 +15,6 @@ class EntityInfoScreen extends StatelessWidget {
     return Scaffold(
         drawer: Navigation(),
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
           title: Text('EntityInfo id = ' + entity.id.toString()),
         ),
         body: Padding(
@@ -25,9 +24,9 @@ class EntityInfoScreen extends StatelessWidget {
                 itemCount: entity.attributesRaw.entries.length,
                 itemBuilder: (context, sindex) {
                   return Wrap(
-                    children: [Text(entity.attributesRaw.entries.elementAt(sindex).key, style: TextStyle(color: Colors.white54, fontWeight: FontWeight.bold)),
-                               Text(' = ', style: TextStyle(color: Colors.white54, fontWeight: FontWeight.bold)),
-                               Text(entity.attributesRaw.entries.elementAt(sindex).value.desc ?? ' ', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                    children: [Text(entity.attributesRaw.entries.elementAt(sindex).key, style: TextStyle(fontWeight: FontWeight.bold)),
+                               Text(' = ', style: TextStyle(fontWeight: FontWeight.bold)),
+                               Text(entity.attributesRaw.entries.elementAt(sindex).value.desc ?? ' ', style: TextStyle(fontWeight: FontWeight.bold)),
                     ]
                   );
                 }

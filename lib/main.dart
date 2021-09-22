@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_entity_list/entity_info/entity_info_screen.dart';
 import 'package:flutter_entity_list/entity_list/entity_list_screen.dart';
 import 'package:flutter_entity_list/settings/settings_screen.dart';
+import 'package:flutter_entity_list/settings/settings_screen_controller.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -14,6 +15,7 @@ import 'authentication/login_screen.dart';
 import 'entity_list/entity_list_repository.dart';
 import 'entity_list/model/entity.dart';
 import 'entity_list/model/metadata.dart';
+import 'inf/themes.dart';
 
 void main() {
   initServices();
@@ -50,9 +52,12 @@ class MyApp extends GetWidget<AuthenticationController> {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       enableLog: true,
-      theme: new ThemeData(
+      /*theme: new ThemeData(
           canvasColor: Color.fromRGBO(58, 66, 86, 1.0),
-      ),
+      ),*/
+      theme: Themes.light,
+      darkTheme: Themes.dark,
+      color: context.theme.canvasColor,
       title: "Flutter Argus Entity List (FAEL)",
       home: Obx(() {
         if (controller.state is UnAuthenticated) {

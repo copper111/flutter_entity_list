@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_entity_list/entity_list/model/entity.dart';
 import 'package:flutter_entity_list/entity_list/model/metadata.dart';
 import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 class EntityWidget extends StatelessWidget {
   final List<EntityMetadata> metadata;
@@ -41,7 +42,7 @@ class EntityWidget extends StatelessWidget {
             side: BorderSide(color: Colors.green, width: 3),
             borderRadius: BorderRadius.all(Radius.circular(10))),*/
         child: Container(
-          decoration: BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
+          decoration: BoxDecoration(color: context.theme.backgroundColor),
           child: ExpansionTile(
             title: Row(
               children: [
@@ -50,7 +51,7 @@ class EntityWidget extends StatelessWidget {
                     children: [
                       /*Text(entity.attributesRaw['Entity']!=null ? entity.attributesRaw['Entity'].desc : ' ', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                       entity.attributesRaw['Entity']!=null ? Text(' - ', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)) : Text(' '),*/
-                      Text(entity.attributesRaw['ObjectName']!=null ? entity.attributesRaw['ObjectName'].desc : ' ', style: TextStyle(color: Colors.white70, fontWeight: FontWeight.bold)),
+                      Text(entity.attributesRaw['ObjectName']!=null ? entity.attributesRaw['ObjectName'].desc : ' ', style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ),
@@ -80,15 +81,15 @@ class EntityWidget extends StatelessWidget {
                                     child: Wrap(
                                       children: [
                                         Text(groupedAttributes[key][sindex].caption ??
-                                            ' [] ', style: TextStyle(color: Colors.white54, fontWeight: FontWeight.bold)),
-                                        Text(' = ', style: TextStyle(color: Colors.white54, fontWeight: FontWeight.bold)),
+                                            ' [] ', style: TextStyle(fontWeight: FontWeight.bold)),
+                                        Text(' = ', style: TextStyle(fontWeight: FontWeight.bold)),
                                         Text(entity
                                                 .attributesRaw[groupedAttributes[key]
                                                         [sindex]
                                                     .attributeName]
                                                 .desc
                                                 .toString() ??
-                                            ' ', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                                            ' ', style: TextStyle(fontWeight: FontWeight.bold)),
                                       ],
                                     ),
                                   ),
