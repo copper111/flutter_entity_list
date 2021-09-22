@@ -23,7 +23,7 @@ class SettingsScreen extends StatelessWidget {
                       child: Switch(
                         value: _.isSwitched,
                         onChanged: (value) {
-                          _.changeTheme(value);
+                          _.changeTheme(value) ;
                         },
                       ),
                     ),
