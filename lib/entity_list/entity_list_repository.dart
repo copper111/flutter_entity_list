@@ -18,17 +18,11 @@ class EntityListRepository extends GetxService{
 
   /// Получает список экземпляров определенной сущности
   Future<List<Entity>> getEntities(int entityId, String iucKeyword, List possibleFilterStates, List<String> sortingRules, int firstRow, int maxRows) async{
-    /*List<Entity> remoteResult = await entityRestClient.getEntities(entityId, iucKeyword, possibleFilterStates, sortingRules, firstRow, maxRows);
-    entityLocalStorage.setEntities(remoteResult);
-
-    var localResult = entityLocalStorage.getEntities(entityId, iucKeyword, possibleFilterStates, sortingRules, firstRow, maxRows);
-    return localResult;*/
-
     entityRestClient.getEntities(entityId, iucKeyword, possibleFilterStates, sortingRules, firstRow, maxRows).then((value) =>
     {
       entityLocalStorage.setEntities(value),
     }).onError((error, stackTrace) => {
-
+      //TODO: обработать
     });
 
 
@@ -38,9 +32,9 @@ class EntityListRepository extends GetxService{
 
   Future<List<EntityMetadata>> getEntityMetadataList(int entityId, String iuk) async{
     metadataRestClient.getEntityMetadata(entityId, iuk).then((value) => {
-      metadataLocalStorage.setAllEntityMetadata(value),
+      metadataLocalStorage.setAllEntityMetadata(value, entityId),
     }).onError((error, stackTrace) => {
-
+      //TODO: обработать
     });
 
     var localResult = metadataLocalStorage.getAllEntityMetadata(entityId, iuk);

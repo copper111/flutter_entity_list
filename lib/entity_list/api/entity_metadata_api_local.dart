@@ -3,13 +3,13 @@ import 'package:hive/hive.dart';
 
 class EntityMetadataApiLocal{
   Future<List<EntityMetadata>> getAllEntityMetadata(int entityId, String iuc) async {
-    var box = await Hive.openBox<EntityMetadata>('entity_metadata');
-    return box.values.toList(growable: true).toList();
+    var box = await Hive.openBox<List<EntityMetadata>>('entity_metadata');
+    return box.get(entityId).toList(growable: true);
   }
 
-  Future<void> setAllEntityMetadata(List<EntityMetadata> metadataList) async {
-    var box = await Hive.openBox<EntityMetadata>('entity_metadata');
-    Map<dynamic, EntityMetadata> map = Map.fromIterable(metadataList, key: (m) => m.attributeName, value: (m) => m);
+  Future<void> setAllEntityMetadata(List<EntityMetadata> metadataList, int entityId) async {
+    var box = await Hive.openBox<List<EntityMetadata>>('entity_metadata');
+    Map<dynamic, List<EntityMetadata>> map = {entityId : metadataList};
     box.putAll(map);
   }
 }
