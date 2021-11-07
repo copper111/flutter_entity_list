@@ -10,8 +10,14 @@ class LoginController  extends GetxController {
   final AuthenticationController _authenticationController = Get.find();
 
   final _loginStateStream = LoginState().obs;
+  final obscureText = true.obs;
 
   LoginState get state => _loginStateStream.value;
+
+  void tuggleObscureText(){
+    obscureText.value = !obscureText.value;
+    update();
+  }
 
   void login(String email, String password, String url) async {
     _loginStateStream.value = LoginLoading();

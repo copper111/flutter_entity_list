@@ -44,7 +44,7 @@ class __SignInFormState extends State<_SignInForm> {
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final _ipController = TextEditingController();
-  MaskTextInputFormatter formatter = MaskTextInputFormatter(mask: "###.###.###.###");
+  MaskTextInputFormatter formatter = MaskTextInputFormatter(mask: "###.###.#.##");
 
   bool _autoValidate = false;
 
@@ -84,7 +84,7 @@ class __SignInFormState extends State<_SignInForm> {
                   filled: true,
                   isDense: true,
                 ),
-                obscureText: true,
+                obscureText: _controller.obscureText.value,
                 controller: _passwordController,
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -112,6 +112,7 @@ class __SignInFormState extends State<_SignInForm> {
                   return null;
                 },
               ),
+              IconButton(onPressed: _controller.tuggleObscureText, icon: Icon(Icons.remove_red_eye)),
               const SizedBox(
                 height: 16,
               ),
