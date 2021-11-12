@@ -44,7 +44,7 @@ class __SignInFormState extends State<_SignInForm> {
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final _ipController = TextEditingController();
-  MaskTextInputFormatter formatter = MaskTextInputFormatter(mask: "###.###.#.##");
+  MaskTextInputFormatter formatter = MaskTextInputFormatter(mask: "###.###.###.###");
 
   bool _autoValidate = false;
 
