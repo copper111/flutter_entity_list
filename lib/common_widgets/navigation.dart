@@ -23,7 +23,10 @@ class Navigation extends StatelessWidget {
                     'Аргус',
                     style: TextStyle(fontSize: 25),
                   ),
-                  _authenticationController.state is Authenticated ? Text("${(_authenticationController.state as Authenticated).user.loginName}") : Text("")
+                  _authenticationController.state is Authenticated
+                      ? Text(
+                          "${(_authenticationController.state as Authenticated).user.loginName}")
+                      : Text("")
                 ],
               ),
               decoration: BoxDecoration(
@@ -32,29 +35,40 @@ class Navigation extends StatelessWidget {
                       fit: BoxFit.contain,
                       image: AssetImage('assets/logo.png'))),
             ),
-
             ListTile(
               leading: Icon(Icons.list),
-              title: Text('Список сущностей', style: TextStyle(fontWeight: FontWeight.bold)),
+              title: Text('Список сущностей',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {
                 Get.toNamed("/");
               },
             ),
             ListTile(
               leading: Icon(Icons.settings),
-              title: Text('Настройки', style: TextStyle(fontWeight: FontWeight.bold)),
+              title: Text('Настройки',
+                  style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {
                 Get.toNamed("/settings");
               },
             ),
             ListTile(
+              leading: Icon(Icons.wallet_travel_rounded),
+              title:
+              Text('МАРМ', style: TextStyle(fontWeight: FontWeight.bold)),
+              onTap: () {
+                Get.toNamed("/marm");
+              },
+            ),
+            ListTile(
               leading: Icon(Icons.exit_to_app),
-              title: Text('Выход', style: TextStyle(fontWeight: FontWeight.bold)),
+              title:
+                  Text('Выход', style: TextStyle(fontWeight: FontWeight.bold)),
               onTap: () {
                 _authenticationController.signOut();
                 Get.toNamed("/");
               },
             ),
+
           ],
         ),
       ),

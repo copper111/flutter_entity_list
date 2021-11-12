@@ -7,7 +7,7 @@ class EntityApiLocal{
     var box = await Hive.openBox<List<Entity>>('entity');
     // пример сортированного и фильтрованного запроса
     //return box.values.toList(growable: true).where((entity) => entity.attributesRaw["ObjectName"].desc.contains("Схема_кусок_чего-то")).toList();
-    return box.get(entityId).toList(growable: true);
+    return box.get(entityId)!.toList(growable: true);
   }
 
   Future<void> setEntities(List<Entity> entities, int entityId) async {

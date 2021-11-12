@@ -23,7 +23,7 @@ class EntityListScreen extends StatelessWidget {
     const EntityDesripter(20000, "Оборудование")
   ];
 
-  EntityListScreen({Key key, this.user}) : super(key: key);
+  EntityListScreen({required this.user}) : super();
 
 
   @override
@@ -45,8 +45,9 @@ class EntityListScreen extends StatelessWidget {
                     iconSize: 24,
                     elevation: 16,
                     style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
-                    onChanged: (int newValue) {
-                      _.setEntityId(newValue);
+                    onChanged: (int){
+                        _.setEntityId(int!);
+
                     },
                     underline: Container(
                       height: 2,
@@ -73,14 +74,14 @@ class EntityListScreen extends StatelessWidget {
                 builder: (context, ps) {
                   if (ps.connectionState == ConnectionState.done &&
                       ps.hasData) {
-                    return ps.data[0] == null || ps.data[1] == null
+                    return (ps.data as List)[0] == null || (ps.data as List)[1] == null
                         ? Center(child: Text("Не обнаружено подходящих записей.", style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)))
                         : ListView.builder(
-                            itemCount: ps.data[1].length ?? 0,
+                            itemCount: (ps.data as List)[1].length ?? 0,
                             padding: EdgeInsets.all(5),
                             itemBuilder: (context, index) {
                               return EntityWidget(
-                                  ps.data[0], ps.data[1][index]);
+                                  (ps.data as List)[0], (ps.data as List)[1][index]);
                             });
                   } else
                     return Center(child: CircularProgressIndicator());

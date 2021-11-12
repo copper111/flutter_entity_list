@@ -5,7 +5,7 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'login_controller.dart';
 import 'login_state.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -44,7 +44,7 @@ class __SignInFormState extends State<_SignInForm> {
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final _ipController = TextEditingController();
-  MaskTextInputFormatter formatter = MaskTextInputFormatter(mask: "###.###.###.###");
+  MaskTextInputFormatter formatter = MaskTextInputFormatter(mask: "###.###.#.##");
 
   bool _autoValidate = false;
 
@@ -146,7 +146,7 @@ class __SignInFormState extends State<_SignInForm> {
   }
 
   _onLoginButtonPressed() {
-    if (_key.currentState.validate()) {
+    if (_key.currentState!.validate()) {
       _controller.login(_emailController.text, _passwordController.text, _ipController.text);
     } else {
       setState(() {

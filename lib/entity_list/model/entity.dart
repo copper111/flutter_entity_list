@@ -7,13 +7,13 @@ part 'entity.g.dart';
 @JsonSerializable()
 class Entity {
   @HiveField(0)
-  int id;
+  dynamic id;
   @HiveField(1)
-  int entityId;
+  dynamic entityId;
   @HiveField(2)
-  String entityName;
+  dynamic entityName;
   @HiveField(3)
-  Map<String, AttributesRaw> attributesRaw;
+  Map<dynamic, AttributesRaw> attributesRaw;
 
 
   Entity(this.id, this.entityId, this.entityName, this.attributesRaw);

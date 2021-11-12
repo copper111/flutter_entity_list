@@ -20,11 +20,15 @@ class AuthenticationController extends GetxController {
 
   Future<void> signIn(String email, String password, String url) async {
     try {
-      final user = await _authenticationService.signInWithEmailAndPassword(
+      await _authenticationService.signInWithEmailAndPassword(
           email, password, url);
+      final user = _authenticationService.getCurrentUser();
       final connection = _authenticationService.getCurrentConnection();
       final currentBaseUrl = _authenticationService.getCurrentBaseUrl();
-      _authenticationStateStream.value =
+      if(user == null || connection == null || currentBaseUrl == null)
+        _authenticationStateStream.value = AuthenticationFailure(message: 'Не удалось авторизоваться');
+      else
+        _authenticationStateStream.value =
           Authenticated(user: user, connection: connection, currentBaseUrl: currentBaseUrl);
     } catch (e) {
       if(e is DioError){
@@ -33,9 +37,9 @@ class AuthenticationController extends GetxController {
           throw AuthenticationException(
               message: 'Не удалось установить соединение по указанному адресу');
         }
-        if((e as DioError).response.statusCode == 401)
+        if((e as DioError).response!.statusCode == 401)
           throw AuthenticationException(message: 'Не удалось авторизироваться в системе. Проверьте корректность логина и пароля');
-        if((e as DioError).response.statusCode == 500)
+        if((e as DioError).response!.statusCode == 500)
           throw AuthenticationException(message: 'Не удалось авторизироваться в системе. Ошибка сервера приложений: ${(e as DioError).message}');
       } else
          throw AuthenticationException(message: 'Ошибка запроса, свяжитесь с администратором');
@@ -53,7 +57,7 @@ class AuthenticationController extends GetxController {
     final user = await _authenticationService.getCurrentUser();
     final connection = _authenticationService.getCurrentConnection();
     final currentBaseUrl = _authenticationService.getCurrentBaseUrl();
-    if (user == null) {
+    if (user == null || connection == null || currentBaseUrl == null) {
       _authenticationStateStream.value = UnAuthenticated();
     } else {
       _authenticationStateStream.value =

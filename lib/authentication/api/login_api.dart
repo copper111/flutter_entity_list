@@ -12,15 +12,15 @@ abstract class RestClientLogin {
 
  @JsonSerializable()
  class LoginInfo {
-  int id;
-  String loginName;
-  String workerName;
-  String homeRegion;
-  int workerId;
-  String timeZoneId;
-  String workerStatusId;
+  dynamic id;
+  dynamic loginName;
+  dynamic workerName;
+  dynamic homeRegion;
+  dynamic workerId;
+  dynamic timeZoneId;
+  dynamic workerStatusId;
   dynamic changeStatusDate;
-  List<String> securityRoles;
+  List<dynamic> securityRoles;
 
   LoginInfo(
       this.id,

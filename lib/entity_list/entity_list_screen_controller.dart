@@ -10,7 +10,7 @@ class EntityListWidgetControler extends GetxController{
   final logger = Logger();
   final metadata = Future.value(<EntityMetadata>[]).obs;
   final entities = Future.value(<Entity>[]).obs;
-  int entityId;
+  int entityId = 282;
 
   // Получим репозиторий
   final EntityListRepository _entityListRepository = Get.find();
@@ -23,7 +23,6 @@ class EntityListWidgetControler extends GetxController{
   Future<List<EntityMetadata>> getFutureMetadata() async{
     metadata.value = _entityListRepository.getEntityMetadataList(entityId, "List").catchError((Object obj) {
       logger.e("Got error : $obj.printError()");
-      return null;
     });
     return metadata.value;
   }
@@ -31,7 +30,6 @@ class EntityListWidgetControler extends GetxController{
   Future<List<Entity>> getFutureEntities() async{
     entities.value = _entityListRepository.getEntities(entityId, "List", [], [], 0, 1000).catchError((Object obj) {
       logger.e("Got error : $obj.printError()");
-      return null;
     });
     return  entities.value;
   }

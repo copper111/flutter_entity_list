@@ -5,29 +5,28 @@ import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 
 abstract class AuthenticationService extends GetxService {
-  Future<LoginInfo> getCurrentUser();
-  Future<LoginInfo> signInWithEmailAndPassword(String email, String password, String url);
-  Dio getCurrentConnection();
-  String getCurrentBaseUrl();
+  LoginInfo? getCurrentUser();
+  Future<void> signInWithEmailAndPassword(String email, String password, String url);
+  Dio? getCurrentConnection();
+  String? getCurrentBaseUrl();
   Future<void> signOut();
 }
 
 class InstanceAuthenticationService extends AuthenticationService {
-  Future<LoginInfo> currentUser;
-  Dio currentConnection;
-  String currentBaseUrl;
-
+  LoginInfo? currentUser;
+  Dio? currentConnection;
+  String? currentBaseUrl;
 
   @override
-  Future<LoginInfo> getCurrentUser() async {
+  LoginInfo? getCurrentUser() {
     return this.currentUser;
   }
 
   @override
-  Future<LoginInfo> signInWithEmailAndPassword(String email, String password, String url) async {
+  Future<LoginInfo?> signInWithEmailAndPassword(String email, String password, String url) async {
 
       this.currentUser =
-          LoginService(email, password, url).prepareClient().getLoginInfo();
+          await LoginService(email, password, url).prepareClient().getLoginInfo();
       this.currentConnection =
           LoginService(email, password, url).prepareConnection();
       this.currentBaseUrl = url;
@@ -38,12 +37,12 @@ class InstanceAuthenticationService extends AuthenticationService {
   Future<void> signOut() async {}
 
   @override
-  Dio getCurrentConnection() {
+  Dio? getCurrentConnection() {
     return this.currentConnection;
   }
 
   @override
-  String getCurrentBaseUrl() {
+  String? getCurrentBaseUrl() {
     return this.currentBaseUrl;
   }
 }

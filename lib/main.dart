@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_entity_list/entity_info/entity_info_screen.dart';
 import 'package:flutter_entity_list/entity_list/entity_list_screen.dart';
+import 'package:flutter_entity_list/marm_wv/MarmWebViewScreen.dart';
 import 'package:flutter_entity_list/settings/settings_screen.dart';
 import 'package:flutter_entity_list/settings/settings_screen_controller.dart';
 import 'package:get/get.dart';
@@ -61,7 +62,7 @@ class MyApp extends GetWidget<AuthenticationController> {
       title: "Flutter Argus Entity List (FAEL)",
       home: Obx(() {
         if (controller.state is UnAuthenticated) {
-          return LoginPage();
+          return LoginScreen();
         }
 
         if (controller.state is Authenticated) {
@@ -72,10 +73,11 @@ class MyApp extends GetWidget<AuthenticationController> {
         return SettingsScreen();
       }),
       getPages: [
-        GetPage(name: '/', page: () => EntityListScreen()),
+        GetPage(name: '/', page: () => EntityListScreen(user: (controller.state as Authenticated).user)),
         GetPage(name: '/einfo', page: () => EntityInfoScreen()),
         GetPage(name: '/settings', page: () => SettingsScreen()),
-        GetPage(name: '/login', page: () => LoginPage()),
+        GetPage(name: '/login', page: () => LoginScreen()),
+        GetPage(name: '/marm', page: () => MarmWebViewScreen()),
       ],
 
     );

@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_entity_list/authentication/api/login_api.dart';
 import 'package:dio/dio.dart';
 
@@ -20,7 +19,7 @@ class Authenticated extends AuthenticationState {
   final String currentBaseUrl;
 
 
-  Authenticated({@required this.user, @required this.connection, @required this.currentBaseUrl});
+  Authenticated({required this.user, required this.connection, required this.currentBaseUrl});
 
   @override
   List<Object> get props => [user];
@@ -29,7 +28,7 @@ class Authenticated extends AuthenticationState {
 class AuthenticationFailure extends AuthenticationState {
   final String message;
 
-  AuthenticationFailure({@required this.message});
+  AuthenticationFailure({required this.message});
 
   @override
   List<Object> get props => [message];

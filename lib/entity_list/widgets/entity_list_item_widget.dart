@@ -14,14 +14,15 @@ class EntityWidget extends StatelessWidget {
 
   EntityWidget(this.metadata, this.entity);
 
-  List<Map<int, Set<AttributesRaw>>> _prepareGroups() {
+  void _prepareGroups() {
     // Сгруппируем поля по группам, отталкиваясь от атрибута groupName (праилнее, конечно от groupIndex)
     for (var item in metadata) {
       groupedAttributes
-          .putIfAbsent(item.groupName, () => <EntityMetadata>[])
+          .putIfAbsent(item.groupName??"Без группы", () => <EntityMetadata>[])
           .add(item);
     }
     print(groupedAttributes.toString());
+
   }
 
   @override
@@ -51,7 +52,7 @@ class EntityWidget extends StatelessWidget {
                     children: [
                       /*Text(entity.attributesRaw['Entity']!=null ? entity.attributesRaw['Entity'].desc : ' ', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                       entity.attributesRaw['Entity']!=null ? Text(' - ', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)) : Text(' '),*/
-                      Text(entity.attributesRaw['ObjectName']!=null ? entity.attributesRaw['ObjectName'].desc : ' ', style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(entity.attributesRaw['ObjectName']!=null ? entity.attributesRaw['ObjectName']!.desc : ' ', style: TextStyle(fontWeight: FontWeight.bold)),
                     ],
                   ),
                 ),
@@ -63,33 +64,33 @@ class EntityWidget extends StatelessWidget {
                 child: ListView.builder(
                     shrinkWrap: true,
                     physics: ClampingScrollPhysics(),
-                    itemCount: groupedAttributes.length ?? 0,
+                    itemCount: groupedAttributes.length,
                     itemBuilder: (context, index) {
                       String key = groupedAttributes.keys.elementAt(index);
                       return Column(
                         children: [
-                          Text(key ?? 'Общая информация'.toString(),
+                          Text(key,
                        style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold)),
                           ListView.builder(
                               shrinkWrap: true,
                               physics: ClampingScrollPhysics(),
-                              itemCount: groupedAttributes[key].length,
+                              itemCount: groupedAttributes[key]!.length,
                               itemBuilder: (context, sindex) {
                                 return Visibility(
-                                  visible: groupedAttributes[key][sindex].visible,
+                                  visible: groupedAttributes[key]![sindex].visible,
                                   child: Flexible(
                                     child: Wrap(
                                       children: [
-                                        Text(groupedAttributes[key][sindex].caption ??
+                                        Text(groupedAttributes[key]![sindex].caption ??
                                             ' [] ', style: TextStyle(fontWeight: FontWeight.bold)),
                                         Text(' = ', style: TextStyle(fontWeight: FontWeight.bold)),
                                         Text(entity
-                                                .attributesRaw[groupedAttributes[key]
+                                                .attributesRaw[groupedAttributes[key]!
                                                         [sindex]
-                                                    .attributeName]
+                                                    .attributeName]!
                                                 .desc
-                                                .toString() ??
-                                            ' ', style: TextStyle(fontWeight: FontWeight.bold)),
+                                                .toString()
+                                            , style: TextStyle(fontWeight: FontWeight.bold)),
                                       ],
                                     ),
                                   ),

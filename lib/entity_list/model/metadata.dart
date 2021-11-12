@@ -12,15 +12,15 @@ class EntityMetadata {
   @HiveField(2)
   dynamic hint;
   @HiveField(3)
-  bool readOnlyEdits;
+  dynamic readOnlyEdits;
   @HiveField(4)
-  bool required;
+  dynamic required;
   @HiveField(5)
-  bool visible;
+  dynamic visible;
   @HiveField(6)
-  bool showOnUI;
+  dynamic showOnUI;
   @HiveField(7)
-  bool exportable;
+  dynamic exportable;
   @HiveField(8)
   dynamic groupIndex;
   @HiveField(9)
@@ -28,9 +28,9 @@ class EntityMetadata {
   @HiveField(10)
   dynamic displayIndex;
   @HiveField(11)
-  bool compactView;
+  dynamic compactView;
   @HiveField(12)
-  bool sortable;
+  dynamic sortable;
   @HiveField(13)
   dynamic createdFrom;
   @HiveField(14)
@@ -44,15 +44,15 @@ class EntityMetadata {
   @HiveField(18)
   dynamic regExpMask;
   @HiveField(19)
-  bool useSimpleFilter;
+  dynamic useSimpleFilter;
   @HiveField(20)
-  bool needCompleteMask;
+  dynamic needCompleteMask;
   @HiveField(21)
   dynamic selector;
   @HiveField(22)
   dynamic root;
   @HiveField(23)
-  bool refValue;
+  dynamic refValue;
   @HiveField(24)
   dynamic refEntityKeyword;
   @HiveField(25)
@@ -107,9 +107,9 @@ class EntityMetadata {
 @JsonSerializable()
 class InitValueRaw {
   @HiveField(0)
-  int value;
+  dynamic value;
   @HiveField(1)
-  String desc;
+  dynamic desc;
 
   InitValueRaw(this.value, this.desc);
 

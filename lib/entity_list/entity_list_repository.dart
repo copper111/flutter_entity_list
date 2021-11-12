@@ -25,7 +25,7 @@ class EntityListRepository extends GetxService{
           maxRows);
       entityLocalStorage.setEntities(result, entityId);
     } catch(e){
-      print(e.message);
+      //print(e.message);
       Get.snackbar("Ошибка", "Ошибка при загрузке сущностей: $e.message", duration: const Duration(minutes: 1));
     }
     var localResult = await entityLocalStorage.getEntities(entityId, iucKeyword, possibleFilterStates, sortingRules, firstRow, maxRows);
@@ -37,7 +37,7 @@ class EntityListRepository extends GetxService{
       var result = await metadataRestClient.getEntityMetadata(entityId, iuk);
       metadataLocalStorage.setAllEntityMetadata(result, entityId);
     } catch(e){
-      print(e.message);
+      //print(e.message);
       Get.snackbar("Ошибка", "Ошибка при загрузке метаданных: $e.message", duration: const Duration(minutes: 1));
     }
     var localResult = await metadataLocalStorage.getAllEntityMetadata(entityId, iuk);
