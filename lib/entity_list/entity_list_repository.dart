@@ -8,7 +8,7 @@ import 'api/entity_metadata_api_remote.dart';
 import 'model/metadata.dart';
 
 /// Репозиторий для работы с сущностями и метаданными этих сущностей для фичи EntityList
-class EntityListRepository extends GetxService{
+class EntityListRepository /*extends GetxService*/{
 
   // Datasources
   final EntityApiRemote entityRestClient = EntityClientRemote.prepareClient();

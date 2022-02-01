@@ -30,7 +30,7 @@ void initServices() async{
   // серсис авторизации (хранит информацию о текущем пользователе)
   Get.lazyPut(() => AuthenticationController(Get.put(InstanceAuthenticationService())),);
   // репозиторий для сущности
-  Get.lazyPut(() => EntityListRepository());
+  //Get.lazyPut(() => EntityListRepository());
   // синглтон shared preference
   //PreferenceUtils.init();
 

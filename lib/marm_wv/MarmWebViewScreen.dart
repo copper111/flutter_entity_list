@@ -36,7 +36,7 @@ class MarmWebViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AuthenticationController _authenticationController = Get.find();
-          return Scaffold(
+          return SafeArea(child: Scaffold(
             body: Stack(
                 children: <Widget>[
                   new WebView(
@@ -55,7 +55,7 @@ class MarmWebViewScreen extends StatelessWidget {
                   ),
                 ],
               ),
-          );
+          ));
 
   }
 }

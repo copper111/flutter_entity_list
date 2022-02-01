@@ -47,7 +47,6 @@ class EntityListScreen extends StatelessWidget {
                     style: TextStyle(color: Colors.orange, fontWeight: FontWeight.bold),
                     onChanged: (int){
                         _.setEntityId(int!);
-
                     },
                     underline: Container(
                       height: 2,
